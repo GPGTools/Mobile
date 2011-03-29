@@ -121,7 +121,7 @@ function dbRemovePrivateKey(id) {
     }, txFail, txWin);
 }
 function dbGetFirstPrivateKey(callback) {
-    key = "";
+    var key = "";
     db.transaction(function (tx) {
         tx.executeSql("SELECT * FROM PrivateKeys LIMIT 1",
                       [],
@@ -129,10 +129,10 @@ function dbGetFirstPrivateKey(callback) {
                           if (result.rows.length > 0) {
                               key = result.rows.item(0)['key'];
                           }
+                          callback(key);
                       },
                       sqlFail);
     }, txFail, txWin);
-    callback(key);
 }
 function dbShowPrivateKeys() {
     db.transaction(function (tx) {
