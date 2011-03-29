@@ -36,5 +36,6 @@ function fixCopyPaste(el) {
 $(function(){
     fixCopyPaste($('#rawtext'));
     fixCopyPaste($('#encryptedtext'));
+    fixCopyPaste($('#key'));
 });
 /* ------------------------------------------------------------------------- */
