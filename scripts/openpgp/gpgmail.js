@@ -42,7 +42,7 @@ function encrypt() {
 
 
 /* ------------------------------------------------------------------------- */
-function decrypt() {
+function decryptWithKey(key) {
     var text = document.decrypt.encryptedtext.value;
     document.getElementById("decryptButton").setAttribute('disabled');
     document.getElementById("decryptButton").style.color = "#333";
@@ -50,6 +50,13 @@ function decrypt() {
     alert("This might take some time...");
 
     var startTime = new Date();
+    if (undefined != key && key.length) {
+        key = OpenPGP_GetSecretInformation(key);
+        exp_u   = key['u'];
+        exp_d   = key['d'];
+        exp_p   = key['p'];
+        exp_q   = key['q'];
+    }
     var text_plain = OpenPGP_Decrypt(exp_p, exp_q, exp_d, exp_u, text);
     var endTime = new Date();
 
@@ -59,5 +66,9 @@ function decrypt() {
 
     document.decrypt.howLongDecrypt.value =
         (endTime.getTime()-startTime.getTime())/1000.0 + " ms";
+}
+
+function decrypt() {
+    dbGetFirstPrivateKey(decryptWithKey);
 }
 /* ------------------------------------------------------------------------- */

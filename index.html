@@ -33,6 +33,8 @@
         <script src="scripts/db/gpgmail.js" type="text/javascript" charset="utf-8" defer="defer"></script>
 
         <!-- openPGP -->
+        <script src="scripts/hanewin/sha1.js" type="text/javascript" charset="utf-8" defer="defer"></script>
+        <script src="scripts/hanewin/cast5.js" type="text/javascript" charset="utf-8" defer="defer"></script>
         <script src="scripts/hanewin/rsa.js" type="text/javascript" charset="utf-8" defer="defer"></script>
         <script src="scripts/hanewin/aes-enc.js" type="text/javascript" charset="utf-8" defer="defer"></script>
         <script src="scripts/hanewin/base64.js" type="text/javascript" charset="utf-8" defer="defer"></script>
@@ -148,6 +150,11 @@
                 <a href="#" class="back">Back</a>
             </div>
             <form name="addkey" action="#">
+                <h2 style="color:#fff;">Name</h2>
+                <ul class="edit rounded">
+                    <li><input type="text" name="keyname" id="keyname" placeholder="Firstname Lastname" value="" /></li>
+                </ul>
+
                 <h2 style="color:#fff;">Search</h2>
                 <ul class="edit rounded">
                     <li><input type="text" name="searchstring" placeholder="String" value="" id="searchstring" /></li>
@@ -160,9 +167,9 @@
                 </ul>
                 <h2 style="color:#fff;">Copy & Paste</h2>
                 <ul class="edit rounded">
-                    <li><textarea placeholder="The public key here" name="publickey" id="publickey"></textarea></li>
+                    <li><textarea placeholder="The ascii amored key here" name="key" id="key"></textarea></li>
                 </ul>
-                <a style="margin:0 10px;" href="#notimplemented" class="grayButton fade">Import</a>
+                <a style="margin:0 10px;" href="#options" class="grayButton fade" name="importKey" id="importKey">Import</a>
             </form>
         </div>
         <!-- end: add key screen -->
@@ -204,14 +211,12 @@
                 <h2 style="color:#fff">Secret Keys</h2>
                 <ul class="edit rounded">
                     <li>
-                        <select id="secretkeys" name="Secret Keys" multiple="multiple">
-                            <option value ="89117214f14b6dac" selected="selected">Alexander Willner</option>
+                        <select id="secretkeys" name="secretkeys" multiple="multiple">
                         </select>
                     </li>
-
                 </ul>
                 <a style="margin:0 10px; color:#000;" id="addSecretKeyButton" href="#addkey" class="whiteButton fade">Add</a>
-                <a style="margin:0 10px;" href="#notimplemented" class="grayButton fade">Delete</a>
+                <a style="margin:0 10px;" href="#" class="grayButton fade" name="deleteKey" id="deleteKey">Delete</a>
             </form>
         </div>
         <!-- end: options screen -->
