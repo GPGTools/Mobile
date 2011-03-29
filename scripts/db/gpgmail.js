@@ -9,30 +9,30 @@
 
 /* database binding -------------------------------------------------------- */
 $(function() {
-                $('a[name="importKey"]').bind('click',function() {
-                        if($('textarea[name="key"]').val() == "") {
-                            alert("Currently only import via copy&paste is supported");
+                $('#importKey').bind('click tap',function() {
+                        if($('#key').val() == "") {
+                            alert("Please paste the key. This is the only supported way currently.");
                             return;
                         }
-                        if($('input[name="keyname"]').val() == "") {
-                            alert("Please set a key name");
+                        if($('#keyname').val() == "") {
+                            alert("Please set a key name.");
                             return;
                         }
-                        dbSetPrivateKey($('input[name="keyname"]').val(),
-                                        $('textarea[name="key"]').val());
+                        dbSetPrivateKey($('#keyname').val(),
+                                        $('#key').val());
                 });
 });
 $(function() {
-                $('a[name="deleteKey"]').bind('click',function() {
-                        if($('select[name="secretkeys"]').val() == undefined) {
+                $('#deleteKey').bind('click tap',function() {
+                        if($('#secretkeys').val() == undefined) {
                             alert("Please select a key");
                             return;
                         }
-                        dbRemovePrivateKey($('select[name="secretkeys"]').val());
+                        dbRemovePrivateKey($('#secretkeys').val());
                 });
 });
 $(function() {
-                $('input[name="defaultSign"]').bind('click',function() {
+                $('#defaultSign').bind('click tap',function() {
                         if($(this).is(':checked')) {
                             dbSetDefaultSign(1);
                         } else  {
