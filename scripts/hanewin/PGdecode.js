@@ -96,12 +96,12 @@ function doDecrypt(p,q,d,u,text)
 {
   var i=0, len, r='';
 
-  if(text.indexOf('-----BEGIN PGP') == 0)
-  {
-    var a=text.indexOf('\n');
-    if(a>0) a = text.indexOf('\n', a+1);
+  if(text.indexOf('-----BEGIN PGP') == 0) {
+    //var a=text.indexOf('\n');
+    //if(a>0) a = text.indexOf('\n', a+1);
+    a=text.search(/^((\r\n|\r|\n)|$)/gm);
     var e=text.indexOf('\n=');
-    if(a>0 && e>0) text = text.slice(a+2,e);
+    if(a>0 && e>0) text = text.slice(a+1,e);
   }
 
   var s=r2s(text);
